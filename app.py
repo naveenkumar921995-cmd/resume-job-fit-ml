@@ -1,3 +1,7 @@
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import streamlit as st
 from core.job_roles import JOB_ROLES
 from core.resume_parser import parse_resume
