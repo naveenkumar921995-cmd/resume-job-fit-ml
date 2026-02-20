@@ -28,10 +28,6 @@ def get_job_data():
             "Accountant": [
                 "accounting", "tax", "ledger",
                 "tally", "compliance"
-            ],
-            "Investment Banker": [
-                "valuation", "m&a", "equity",
-                "financial modeling"
             ]
         },
 
@@ -39,10 +35,6 @@ def get_job_data():
             "HR Manager": [
                 "recruitment", "employee relations",
                 "payroll", "hr policies"
-            ],
-            "Talent Acquisition Specialist": [
-                "sourcing", "screening",
-                "interviewing", "hiring"
             ]
         },
 
@@ -54,10 +46,6 @@ def get_job_data():
             "Sales Executive": [
                 "lead generation", "crm",
                 "negotiation", "client relationship"
-            ],
-            "Brand Manager": [
-                "branding", "market research",
-                "strategy", "advertising"
             ]
         },
 
@@ -69,10 +57,6 @@ def get_job_data():
             "Nurse": [
                 "patient care", "medication",
                 "clinical procedures"
-            ],
-            "Hospital Administrator": [
-                "healthcare management",
-                "operations", "compliance"
             ]
         },
 
@@ -91,10 +75,6 @@ def get_job_data():
             "UI/UX Designer": [
                 "figma", "wireframing",
                 "prototyping", "user research"
-            ],
-            "Graphic Designer": [
-                "photoshop", "illustrator",
-                "branding", "layout design"
             ]
         },
 
@@ -102,10 +82,39 @@ def get_job_data():
             "Corporate Lawyer": [
                 "contracts", "compliance",
                 "litigation", "legal research"
+            ]
+        },
+
+        # ---------------------------
+        # NEW DEPARTMENT ADDED
+        # ---------------------------
+
+        "Facility Management": {
+
+            "Technical Manager": [
+                "facility operations",
+                "preventive maintenance",
+                "electrical systems",
+                "hvac systems",
+                "budget management",
+                "vendor management",
+                "team leadership",
+                "safety compliance",
+                "building management systems",
+                "project management"
             ],
-            "Legal Advisor": [
-                "regulatory law", "documentation",
-                "negotiation"
+
+            "Shift Engineer": [
+                "electrical maintenance",
+                "mechanical systems",
+                "hvac troubleshooting",
+                "diesel generator",
+                "plumbing systems",
+                "fire fighting systems",
+                "preventive maintenance",
+                "breakdown maintenance",
+                "technical reporting",
+                "safety procedures"
             ]
         }
     }
