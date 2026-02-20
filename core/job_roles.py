@@ -1,33 +1,49 @@
-from core.job_database.data_science import DATA_SCIENCE
-from core.job_database.software_dev import SOFTWARE_DEV
-from core.job_database.finance import FINANCE
-from core.job_database.marketing import MARKETING
-from core.job_database.hr import HR
-from core.job_database.operations import OPERATIONS
-from core.job_database.cybersecurity import CYBERSECURITY
-from core.job_database.cloud_devops import CLOUD_DEVOPS
-from core.job_database.product import PRODUCT
-from core.job_database.sales import SALES
-from core.job_database.design import DESIGN
-from core.job_database.healthcare import HEALTHCARE
-from core.job_database.education import EDUCATION
-from core.job_database.legal import LEGAL
-from core.job_database.supply_chain import SUPPLY_CHAIN
+def get_job_role_keywords(role):
+    roles = {
+        "Data Scientist": [
+            "python", "machine learning", "pandas",
+            "numpy", "tensorflow", "sql", "statistics"
+        ],
+        "Cybersecurity": [
+            "network security", "penetration testing",
+            "firewalls", "siem", "risk assessment"
+        ],
+        "Cloud DevOps": [
+            "aws", "azure", "docker",
+            "kubernetes", "ci/cd", "terraform"
+        ],
+        "Product Manager": [
+            "roadmap", "agile", "stakeholders",
+            "scrum", "product strategy"
+        ],
+        "Marketing": [
+            "seo", "digital marketing",
+            "branding", "campaign", "analytics"
+        ],
+        "Finance": [
+            "financial analysis", "excel",
+            "budgeting", "forecasting", "accounting"
+        ],
+        "Healthcare": [
+            "patient care", "medical",
+            "clinical", "ehr", "healthcare management"
+        ],
+        "HR": [
+            "recruitment", "employee relations",
+            "payroll", "hr policies", "talent acquisition"
+        ],
+        "Legal": [
+            "contracts", "compliance",
+            "litigation", "legal research", "corporate law"
+        ],
+        "Operations": [
+            "logistics", "supply chain",
+            "process improvement", "inventory"
+        ],
+        "Design": [
+            "ui/ux", "figma",
+            "adobe", "wireframing", "prototyping"
+        ]
+    }
 
-JOB_ROLES = {
-    "Data Science & AI": DATA_SCIENCE,
-    "Software Development": SOFTWARE_DEV,
-    "Finance": FINANCE,
-    "Marketing": MARKETING,
-    "Human Resources": HR,
-    "Operations": OPERATIONS,
-    "Cybersecurity": CYBERSECURITY,
-    "Cloud & DevOps": CLOUD_DEVOPS,
-    "Product": PRODUCT,
-    "Sales": SALES,
-    "Design": DESIGN,
-    "Healthcare": HEALTHCARE,
-    "Education": EDUCATION,
-    "Legal": LEGAL,
-    "Supply Chain": SUPPLY_CHAIN,
-}
+    return roles.get(role, [])
