@@ -1,36 +1,52 @@
 import streamlit as st
-from core.similarity_engine import semantic_similarity
-from core.feature_engineering import extract_experience_years, keyword_density
-from core.prediction import predict_fit
-from core.genai_engine import generate_feedback
+from core.job_roles import JOB_ROLES
+from core.resume_parser import parse_resume
+from core.feature_engineering import extract_experience_years
 
-st.set_page_config(page_title="Resume-Job Fit ML System", layout="wide")
+st.set_page_config(page_title="Resume Job Fit Analyzer")
 
-st.title("🚀 Resume–Job Fit Prediction System")
+st.title("📊 AI Resume Job Fit Analyzer")
 
-resume_text = st.text_area("Paste Resume Text")
-job_text = st.text_area("Paste Job Description")
+# 1️⃣ Upload Resume
+uploaded_file = st.file_uploader("Upload Resume (PDF/DOCX)", type=["pdf", "docx"])
 
-if resume_text and job_text:
+# 2️⃣ Department Selection
+department = st.selectbox("Select Department", list(JOB_ROLES.keys()))
 
-    semantic_score = semantic_similarity(resume_text, job_text)
-    exp_years = extract_experience_years(resume_text)
-    keyword_score = keyword_density(resume_text, job_text)
+# 3️⃣ Role Selection
+role = st.selectbox("Select Job Role", list(JOB_ROLES[department].keys()))
 
-    skill_match = keyword_score  # simplified mapping
+if uploaded_file:
+    resume_text = parse_resume(uploaded_file)
 
-    fit_score = predict_fit(skill_match, semantic_score,
-                            keyword_score, exp_years)
+    if st.button("Analyze Fit"):
+        required_skills = JOB_ROLES[department][role]
 
-    feedback = generate_feedback(fit_score)
+        resume_text_lower = resume_text.lower()
 
-    st.subheader("📊 Prediction Results")
+        matched_skills = [skill for skill in required_skills if skill in resume_text_lower]
+        missing_skills = [skill for skill in required_skills if skill not in resume_text_lower]
 
-    col1, col2 = st.columns(2)
-    col1.metric("Predicted Fit Score", f"{fit_score}/100")
-    col2.metric("Semantic Similarity", f"{semantic_score}%")
+        experience_years = extract_experience_years(resume_text)
 
-    st.progress(fit_score / 100)
+        score = int((len(matched_skills) / len(required_skills)) * 100)
 
-    st.subheader("🤖 AI Feedback")
-    st.success(feedback)
+        st.subheader("📈 Fit Score")
+        st.progress(score)
+        st.write(f"**Score:** {score}%")
+
+        st.subheader("🧠 Experience Detected")
+        st.write(f"{experience_years} Years")
+
+        st.subheader("✅ Matching Skills")
+        st.write(matched_skills)
+
+        st.subheader("❌ Missing Skills")
+        st.write(missing_skills)
+
+        if score >= 70:
+            st.success("Strong Fit ✅")
+        elif score >= 40:
+            st.warning("Moderate Fit ⚠️")
+        else:
+            st.error("Low Fit ❌")
