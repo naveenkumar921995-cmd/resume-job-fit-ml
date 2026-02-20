@@ -44,21 +44,19 @@ job_data = get_job_data()
 # ----------------------------------------
 # SIDEBAR SELECTION
 # ----------------------------------------
-st.sidebar.header("📌 Job Selection")
+job_data = get_job_data()
 
-department = st.sidebar.selectbox(
+department = st.selectbox(
     "Select Department",
     list(job_data.keys())
 )
 
-job_post = st.sidebar.selectbox(
+job_role = st.selectbox(
     "Select Job Role",
     list(job_data[department].keys())
 )
 
-required_skills = job_data[department][job_post]
-
-# ----------------------------------------
+keywords = job_data[department][job_role]# ----------------------------------------
 # FILE UPLOAD
 # ----------------------------------------
 uploaded_file = st.file_uploader("Upload Resume (PDF or TXT)", type=["pdf", "txt"])
