@@ -4,7 +4,17 @@ import pdfplumber
 import docx
 
 from core.job_roles import get_job_data
-
+st.sidebar.title("About This System")
+st.sidebar.info(
+    """
+    Integrated Department Resume Analyzer
+    
+    ✔ Cross-Industry Resume Evaluation  
+    ✔ Department-Wise Role Matching  
+    ✔ Skill Gap Identification  
+    ✔ Keyword-Based ATS Scoring
+    """
+)
 
 # ---------------------------
 # Resume Text Extraction
@@ -50,11 +60,24 @@ def calculate_match(resume_text, keywords):
 # Streamlit UI
 # ---------------------------
 
-st.set_page_config(page_title="Resume Job Fit Analyzer", layout="wide")
-
-st.title("📄 AI Resume Job Fit Analyzer")
-st.markdown("Match your resume against real industry job roles.")
-
+st.set_page_config(
+    page_title="Integrated Department Resume Analyzer",
+    layout="wide",
+    page_icon="📊"
+)
+st.set_page_config(
+    page_title="Integrated Department Resume Analyzer",
+    layout="wide",
+    page_icon="📊"
+)
+st.markdown(
+    """
+    ### Multi-Department • Multi-Role • Keyword-Based Resume Evaluation
+    
+    Analyze resume compatibility across various departments and job roles 
+    using structured skill-based matching logic.
+    """
+)
 
 # ---------------------------
 # Job Selection
