@@ -6,3 +6,5 @@ matplotlib
 sentence-transformers
 PyPDF2
 joblib
+pdfplumber
+python-docx
